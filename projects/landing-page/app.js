@@ -42,14 +42,16 @@ for (section of sectionList) {
     //CREATE THE ANCHOR AND THEN APPEND IN A LINK
     const HREF = document.createElement('a');
     //const sectionId = getSectionId(sectionList);
-    HREF.setAttribute("href", "#", + section.id);
+    HREF.setAttribute("href", "#", section.id);
     listElement.appendChild(HREF);
     let title = document.querySelector("h2").innerText;
     HREF.innerText = title;
-    
     //Append the above to the Navigation list
     NavBar.appendChild(listElement);
 }
+
+
+
  // CREATE THE LI ELEMENT
  // CREATE ANY OTHER HTML ELEMENTS
  // APPEND IN ANY CLASS NAMES TO THE LI
