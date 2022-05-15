@@ -25,30 +25,33 @@ let sectionList = document.querySelectorAll("section");
 function getSectionId(section) {
     return section.id;
 }
-//GET THE ACTUAL TITLE OF THE SECTION
-let title = document.querySelector("section").innerText;
+
    
-
-
-
-
     //add LI items to the navbar__list parent ADD LI ITEMS TO THE NAVBAR__LIST PARENT
 
-//SET UP A LOOP, THEN FOR EACH
+//SET UP A LOOP, THEN BUILD THE NEW LI FOR EACH
 
 for (section of sectionList) {
+    //GET THE ACTUAL TITLE OF THE SECTION
+    let title = document.querySelector("h2").innerText;
     //CREATE THE LI ELEMENT FOR NAV FOR RE-USE, INCLUDING THE CLASS LISTS
     const listElement = document.createElement("li");
     //CREATE THE ANCHOR AND THEN APPEND IN A LINK
     const HREF = document.createElement('a');
     //const sectionId = getSectionId(sectionList);
-    HREF.setAttribute("href", "#", section.id);
+    HREF.setAttribute("href", "#" + section.id);
     listElement.appendChild(HREF);
-    let title = document.querySelector("h2").innerText;
-    HREF.innerText = title;
+    //GET THE RIGHT SECTION INTO EACH NAV LINK
+    HREF.innerText = section.id;
+    // ADD SOME APPROPRIATE CLASSES for sytling, see reference below
+    listElement.classList.add('menu__link');
     //Append the above to the Navigation list
     NavBar.appendChild(listElement);
 }
+
+// ADD CLASS TO MENU 
+// Simple blog post assistend to assing the classes via javascript, thanks to https://bobbyhadz.com/blog/javascript-create-element-with-class
+
 
 
 
