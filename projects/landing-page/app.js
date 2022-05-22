@@ -23,7 +23,7 @@ let sectionList = document.querySelectorAll('section');
 
 //GET A NODE LIST OF THE SECTIONS
 function getSectionId(section) {
-    return section.id;
+    return section.id:
 }
     //add LI items to the navbar__list parent ADD LI ITEMS TO THE NAVBAR__LIST PARENT
 
