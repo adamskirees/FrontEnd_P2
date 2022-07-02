@@ -197,6 +197,11 @@ section.your-active-class {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
+/* added from the above, so the CSS is correct */
+.your-active-class {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+}
 
 section.your-active-class .landing__container::before {
     opacity: 1;
