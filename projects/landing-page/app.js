@@ -22,13 +22,23 @@ const NavBar = document.getElementById('navbar__list');
 let sectionList = document.querySelectorAll('section');
 
 //GET A NODE LIST OF THE SECTIONS
-function getSectionId(section) {
-    return section.id:
-}
+//function getSectionId(section) {
+    //return section.id;
+//}
     //add LI items to the navbar__list parent ADD LI ITEMS TO THE NAVBAR__LIST PARENT
-
-//SET UP A LOOP, THEN BUILD THE NEW LI FOR EACH
-
+    // IDENTIFY THE ACTIVE SECTION OF THE PAGE, SO THE ACTIVE SECTION IS UPDATED AND UPDATES THE LI AS WELL
+    // HAVE REFERED TO UDACITY MENTOR ANSWER FOR THIS...https://knowledge.udacity.com/questions/85408*****
+    function isElementInViewport(el) {
+        var rect = el.getBoundingClientRect();
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document. documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document. documentElement.clientWidth)
+        );
+      }
+                            
+//SET UP A LOOP, THEN BUILD THE NEW LI FOR EACH SECTION WE HAVE***************************************
 for (section of sectionList) {
     //GET THE ACTUAL TITLE OF THE SECTION
     let title = document.querySelector("h2").innerText;
@@ -44,19 +54,39 @@ for (section of sectionList) {
     HREF.innerText = section.id;
     // ADD SOME APPROPRIATE CLASSES for sytling, see reference below
     HREF.classList.add('menu__link');
+    HREF.classList.add(section.id);
    //Append the above to the Navigation list
     NavBar.appendChild(listElement);
-
         //look for and alter the active class in the navigation
         if (section.classList.contains('your-active-class')) {
             HREF.classList.add('your-active-class');
         }
-
 }
+
+//CALL THE FUNCTION ABOVE UPON SCROLL, USING THE sectionList
+window.document.addEventListener(
+    "scroll",
+    function (event) {
+        sectionList.forEach((section) => {
+            if (isElementInViewport(section)) {
+                section.classList.add("your-active-class");       
+            }
+            else (section.classList.remove("your-active-class"));
+        });
+ 
+    },
+    false
+);
+
+
+//AS PER ABOVE WITH ACTIVE SECTOIN, Get a Nav list and then UPDATE THE ACTIVE NAV UPON SCROLL
+let navsList = document.querySelectorAll("ul .nav-item");
+
+
+
+
 // ADD CLASS TO MENU 
-
-
-
+// IMPLIMENT A SMOOTH SCROLL FROM THE CLICK OF THE MENU LI 
 
  // CREATE THE LI ELEMENT - *** done *** May need to refactor the loop.
  // CREATE ANY OTHER HTML ELEMENTS
