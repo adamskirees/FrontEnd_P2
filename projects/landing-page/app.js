@@ -17,14 +17,16 @@
  * ---We need to make an array of the sections
  * ---Then put this array into the nav with an inner HTML (or similar)
 */
-// 
+
+// MY CODE BEGIN **************************************************************************************** 
 const NavBar = document.getElementById('navbar__list');
 let sectionList = document.querySelectorAll('section');
 
-//GET A NODE LIST OF THE SECTIONS
-//function getSectionId(section) {
-    //return section.id;
-//}
+//GET A NODE LIST OF THE SECTIONS***********************************************************************
+function getSectionId(section) {
+    return section.id;
+}
+
     //add LI items to the navbar__list parent ADD LI ITEMS TO THE NAVBAR__LIST PARENT
     // IDENTIFY THE ACTIVE SECTION OF THE PAGE, SO THE ACTIVE SECTION IS UPDATED AND UPDATES THE LI AS WELL
     // HAVE REFERED TO UDACITY MENTOR ANSWER FOR THIS...https://knowledge.udacity.com/questions/85408*****
@@ -63,7 +65,8 @@ for (section of sectionList) {
         }
 }
 
-//CALL THE FUNCTION ABOVE UPON SCROLL, USING THE sectionList
+//CALL THE FUNCTION ABOVE UPON SCROLL, USING THE sectionList **************************************
+//THIS POST WAS READ SEVERAL TIMES TO ASSIST https://knowledge.udacity.com/questions/66312#66326
 window.document.addEventListener(
     "scroll",
     function (event) {
@@ -78,10 +81,31 @@ window.document.addEventListener(
     false
 );
 
-
 //AS PER ABOVE WITH ACTIVE SECTOIN, Get a Nav list and then UPDATE THE ACTIVE NAV UPON SCROLL
-let navsList = document.querySelectorAll("ul .nav-item");
+// GET A LIST OF NAV ITEMS*********************************************************************
+let navsList = document.querySelectorAll("ul .menu__link");
+//console.log(navsList);
 
+window.document.addEventListener("scroll", () => {
+        let sectionId = "";
+        sectionList.forEach((section) => {
+            let sectionTop = section.offsetTop;
+            let sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - sectionHeight / 3) {
+                sectionId = section.id;
+            }    
+    });
+           
+//loop to update the Nav highlighting ********************************************************
+console.log(sectionId);
+navsList.forEach((li) => {
+    if (li.classList.contains(sectionId)) {
+        li.classList.add("your-active-class");
+    } else {
+        li.classList.remove("your-active-class");
+    }
+    });
+});
 
 
 
