@@ -21,6 +21,8 @@
 // MY CODE BEGIN **************************************************************************************** 
 const NavBar = document.getElementById('navbar__list');
 let sectionList = document.querySelectorAll('section');
+const navbarLinks = document.querySelectorAll(".navbar__menu a");
+
 
 //GET A NODE LIST OF THE SECTIONS***********************************************************************
 function getSectionId(section) {
@@ -30,6 +32,7 @@ function getSectionId(section) {
     //add LI items to the navbar__list parent ADD LI ITEMS TO THE NAVBAR__LIST PARENT
     // IDENTIFY THE ACTIVE SECTION OF THE PAGE, SO THE ACTIVE SECTION IS UPDATED AND UPDATES THE LI AS WELL
     // HAVE REFERED TO UDACITY MENTOR ANSWER FOR THIS...https://knowledge.udacity.com/questions/85408*****
+    // REMAINED WITH THIS METHOD EVEN WITH SMALL SCREEN ISSUES, INSTEAD OF USING INTERSECTION OBSERVER API
     function isElementInViewport(el) {
         var rect = el.getBoundingClientRect();
         return (
@@ -97,7 +100,7 @@ window.document.addEventListener("scroll", () => {
     });
            
 //loop to update the Nav highlighting ********************************************************
-console.log(sectionId);
+//console.log(sectionId);
 navsList.forEach((li) => {
     if (li.classList.contains(sectionId)) {
         li.classList.add("your-active-class");
@@ -108,9 +111,21 @@ navsList.forEach((li) => {
 });
 
 
+// IMPLIMENT A SMOOTH SCROLL FROM THE CLICK OF THE MENU LI*****************************************
+//CLICK EVENT
+//navbarLinks.forEach(elem => elem.addEventListener("click", navbarLinkclick));
+// StackOverflow post was most helpful...https://stackoverflow.com/questions/7717527/smooth-scrolling-when-clicking-an-anchor-link
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-// ADD CLASS TO MENU 
-// IMPLIMENT A SMOOTH SCROLL FROM THE CLICK OF THE MENU LI 
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+
 
  // CREATE THE LI ELEMENT - *** done *** May need to refactor the loop.
  // CREATE ANY OTHER HTML ELEMENTS
