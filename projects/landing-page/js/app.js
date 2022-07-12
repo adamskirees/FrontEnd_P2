@@ -128,7 +128,7 @@ const task = function() {
         }
     };  
     window.document.addEventListener("scroll", () => {
-        setTimeout(task, 5000)
+        setTimeout(task, 1500)
         });
 
      
